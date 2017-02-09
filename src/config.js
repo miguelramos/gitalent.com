@@ -5,21 +5,6 @@ module.exports = {
     SUPPORTED: ['pt', 'es', 'de']
   },
   API_VERSION: 'v1',
-  HOSTS: {
-    DEVELOPMENT: 'staging.foursource.com',
-    STAGING: 'staging.foursource.com',
-    TESTING: 'showroom.staging.foursource.com',
-    LIVE: 'foursource.com'
-  },
-  DOMAINS: {
-    AUTH: 'be-auth',
-    BUYER: 'be-buyer',
-    MANUFACTURER: 'be-manufacturer',
-    LOCAL: '',
-    SITE: 'http://www.foursource.com',
-    UPLOADER: 'be-uploader',
-    LOGGING: ''
-  },
   STATE: {
     NAVBAR: {
       isVisible: true,
@@ -54,15 +39,5 @@ module.exports = {
     FOOTER: {
       enable: true
     }
-  },
-  TYPES: {
-    MANUFACTURER: 'MANUFACTURER',
-    BUYER: 'BUYER'
-  },
-  ENDPOINTS: {
-    COMMON_NAV: '@local:/assets/mocks/common/navigator-data.json',
-    COMMON_FOOT: '@local:/assets/mocks/common/footer-data.json',
-    COMMON_INFO: '@local:/assets/mocks/common/infobar-data.json',
-    AUTH_LOGIN: '@auth:/auth/get-token'
   }
 }

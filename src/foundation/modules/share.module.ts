@@ -7,7 +7,7 @@ import { NgPipesModule } from 'angular-pipes';
 import { TranslateModule } from 'ng2-translate/ng2-translate';
 
 import { ConsolePipe } from '../pipes';
-import { TRANSCLUDE_DIRECTIVE } from '../directives';
+import { TRANSCLUDE_DIRECTIVE, HOST_DIRECTIVE } from '../directives';
 
 @NgModule({
   imports: [
@@ -16,11 +16,11 @@ import { TRANSCLUDE_DIRECTIVE } from '../directives';
   ],
   exports: [
     CommonModule, FormsModule, ReactiveFormsModule, HttpModule,
-    TranslateModule, TRANSCLUDE_DIRECTIVE, ConsolePipe
+    TranslateModule, TRANSCLUDE_DIRECTIVE, ConsolePipe, HOST_DIRECTIVE
   ],
   providers: [],
   declarations: [
-    TRANSCLUDE_DIRECTIVE, ConsolePipe
+    TRANSCLUDE_DIRECTIVE, ConsolePipe, HOST_DIRECTIVE
   ]
 })
 export class ShareModule { }

@@ -1,0 +1,32 @@
+{
+  "data": {
+    "brand": {
+      "active": true,
+      "image": "assets/img/fs-logo.svg",
+      "image_inverse": "assets/img/fs-logo-white.png",
+      "label": "FourSource",
+      "link": "/"
+    },
+    "menu": [
+      { "link": "/details/buyers", "label": "For Buyers" },
+      { "link": "/details/manufacturers", "label": "For Manufacturers" },
+      { "link": "/details/service-agencies", "label": "For Service Agencies" },
+      { "link": "/pricing", "label": "Editions & Pricing" }
+    ],
+    "side": [
+      { "link": "/pricing", "label": "JOIN NOW", "classes": "btn-side btn-red btn-join" },
+      { "link": "/login", "label": "LOGIN", "classes": "btn-side" }
+    ]
+  },
+  "meta": {
+    "page_size": 0,
+    "length": 0
+  },
+  "links": {
+    "self": "",
+    "first": "",
+    "prev": "",
+    "next": ""
+  },
+  "options": null
+}

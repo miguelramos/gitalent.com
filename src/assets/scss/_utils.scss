@@ -1,0 +1,112 @@
+// rem: Calculate the rem unit, and return both pixels and rems
+// to support older (non-rem supporting) browsers
+@mixin rem($property, $value, $context: $font-size-base) {
+	#{$property}: $value;
+	#{$property}: cr($value, $context);
+}
+
+// Since the most common application of this is likely to be
+// with font-size, I've created a special mixin just for that
+// which will save you a whopping **5 characters** per time you
+// have to type it. Productivity FTW!
+@mixin font-size($font-size) {
+	@include rem(font-size, $font-size);
+}
+
+
+// Functions
+
+// calc-rem: calculate the rem value based on the desired pixel
+// value versus a context value, usually the default font size
+@function calc-rem( $target, $context: $font-size-base ) {
+	@return $target / $context * 1rem;
+}
+
+// Shorthand redeclaration of the above
+@function cr( $target, $context: $font-size-base ) {
+	@return calc-rem( $target, $context );
+}
+
+
+// calc-percent: calculate the percent using the target ÷ context
+// formula, expressed as a percentage.  See Chapter 2 of "Responsive
+// Web Design" (Marcotte, A Book Apart, 2011)
+@function calc-percent( $target, $context ) {
+	@return percentage( $target / $context );
+}
+
+// Shorthand redeclaration of the above
+@function cp( $target, $context ) {
+	@return calc-percent( $target, $context );
+}
+
+
+// calc-em: sometimes, you really need to use ems, not rems,
+// esp. when you're dealing with fonts that should be sized
+// relative to other items in a component, such as headers.
+// Remember to define your context!  Your context will be
+// the font-size of the parent element.
+
+@function calc-em( $target, $context ) {
+	@return $target / $context * 1em;
+}
+
+// Shorthand redeclaration of the above
+
+@function ce( $target, $context ) {
+	@return calc-em( $target, $context );
+}
+
+
+// hidpi-sprite-adjustment
+// when using Sass & Compass to generate sprites, there are issues with calculating the
+// position of the HiDPI sprites. See http://blog.teamtreehouse.com/?p=20925 (I'll update
+// this documentation when I get a chance to later.)  this function makes the necessary
+// adjustment for you.
+@function hidpi-sprite-adjustment($sprite-map, $sprite) {
+	@return round(nth(sprite-position($sprite-map, $sprite), 2) / 2);
+}
+
+// retina-sprite-adjustment
+// prefer the term "retina" over "hidpi"? here you go, this aliases the previous function
+@function retina-sprite-adjustment($sprite-map, $sprite) {
+	@return hidpi-sprite-adjustment($sprite-map, $sprite);
+}
+
+@mixin fs-cover() {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@mixin fs-background-blur($value) {
+  -webkit-filter: blur($value);
+  -moz-filter: blur($value);
+  -o-filter: blur($value);
+  -ms-filter: blur($value);
+  filter: blur($value);
+}
+
+@mixin fs-not-rounded() {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+@mixin fs-opacity($valuePercentage, $value) {
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$value)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=$value);
+
+  /* Netscape */
+  -moz-opacity: $valuePercentage;
+
+  /* Safari 1.x */
+  -khtml-opacity: $valuePercentage;
+
+  /* Good browsers */
+  opacity: $valuePercentage;
+}

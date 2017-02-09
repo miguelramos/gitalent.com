@@ -1,0 +1,30 @@
+{
+  "data": {
+    "id": 1,
+    "company": "FourSource",
+    "country": "DE",
+    "address": "Largo do Gaio, 193",
+    "custom": "",
+    "city": "Porto",
+    "zip": "4910-123",
+    "first_name": "Francisco",
+    "last_name": "Carlão",
+    "department": "IT",
+    "job": "CTO",
+    "prefix": "351",
+    "phone": "123456789",
+    "email": "sales@foursource.com",
+    "type": "buyer"
+  },
+  "meta": {
+    "page_size": 0,
+    "length": 0
+  },
+  "links": {
+    "self": "",
+    "first": "",
+    "prev": "",
+    "next": ""
+  },
+  "options": null
+}

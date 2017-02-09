@@ -1,31 +1,110 @@
-# Talent
+FourSource FrontEnd Boilerplate
+====
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.26.
+Fourcesource angular 2 boilerplate.
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Install
 
-## Code scaffolding
+* NVM 
+```bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+* Node 
+```bash
+nvm install v6.9.0
+```
 
-## Build
+* YARN 
+```bash
+curl -o- -L https://yarnpkg.com/install.sh | bash
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+* Project 
+```bash
+git clone git@bitbucket.org:foursource/boilerplate.git
+cd boilerplate
+yarn
+yarn start
+```
 
-## Running unit tests
+Disable auto tagging on npm
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+	npm config set git-tag-version false
 
-## Running end-to-end tests
+## Usage
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+# Dev
+Hot reload and server
 
-## Deploying to GitHub Pages
+```bash
+yarn start
+```
 
-Run `ng github-pages:deploy` to deploy to GitHub Pages.
+Recompile dll files (vendors and libs)
 
-## Further help
+```bash
+yarn build:dll
+```
+# Production
+Tree shaking and AOT compile
 
-To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```bash
+yarn compile
+```
+
+Test production
+
+```bash
+yarn prodserver
+```
+
+Or all in one
+
+```bash
+yarn prod
+```
+
+# Release
+
+Release a new version will bump version on package.json, create/update the changelog file with all commit in line with convention.
+
+To now more about convention to use in commits please follow the links:
+
+	https://github.com/conventional-changelog/conventional-changelog-cli
+	https://github.com/conventional-changelog/conventional-changelog-angular/blob/master/convention.md
+
+1. Make changes
+2. Commit those changes
+4. Bump version in package.json
+
+		npm version [major | minor | patch]
+		
+5. Now tag your version following the convention:
+	6. git tag -a v0.1.1 -m "release: feat(version): all new features"
+	7. git push && git push --tags
+8. Done  	 
+
+# Considerations
+
+The following are some things that will make AOT compile fail.
+
+- Don’t use require statements for your templates or styles, use styleUrls and templateUrls, the angular2-template-loader plugin will change it to require at build time.
+- Don’t use default exports.
+- Don’t use form.controls.controlName, use form.get(‘controlName’)
+- Don’t use control.errors?.someError, use control.hasError(‘someError’)
+- Don’t use functions in your providers, routes or declarations, export a function and then reference that function name
+- Inputs, Outputs, View or Content Child(ren), Hostbindings, and any field you use from the template or annotate for Angular should be public
+
+## Testing
+
+To be described
+
+## Contributors
+
+[![Author](https://img.shields.io/badge/author-miguelramos-blue.svg)](https://twitter.com/miguelonspring)
+[![Author](https://img.shields.io/badge/author-amaral-orange.svg)](https://twitter.com/jamaral)
+
+## License
+
+[MIT](https://bitbucket.org/foursource/platform/src/master/LICENSE)

@@ -14,6 +14,8 @@
 .c9/
 *.launch
 .settings/
+.awcache/
+
 
 # IDE - VSCode
 .vscode/*
@@ -30,7 +32,8 @@
 npm-debug.log
 testem.log
 /typings
-
+build/
+dist/
 # e2e
 /e2e/*.js
 /e2e/*.map

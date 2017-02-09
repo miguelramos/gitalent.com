@@ -1,0 +1,15 @@
+{
+  "HELLO": "Welcome to Angular 2",
+  "LOGIN": {
+    "TITLE": "LOGIN",
+    "ERRORS": {
+      "EMAIL_REQUIRED": "Email is required!",
+      "EMAIL_INVALID": "Email is invalid!",
+      "PASSWORD_REQUIRED": "Password is required!",
+      "PASSWORD_INVALID": "Invalid credentials."
+    },
+    "FORGOT": {
+      "TITLE": "Forgot password?"
+    }
+  }
+}

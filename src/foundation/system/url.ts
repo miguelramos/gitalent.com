@@ -28,7 +28,7 @@ export class Url {
   constructor(
     private configurator: Configurator
   ) {
-    this.init();
+    // this.init();
   }
 
   get(name: string, domain: string = null, withoutPrefix = true) {
