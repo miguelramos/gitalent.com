@@ -9,7 +9,7 @@ import { Configurator } from './configurator';
 @Injectable()
 export class Url {
   static SITE: string = '@site';
-  static AUTH: string = '@auth';
+  static API: string = '@api';
   static LOCAL: string = '@local';
   static DOMAIN: string = '@domain';
 
@@ -28,7 +28,7 @@ export class Url {
   constructor(
     private configurator: Configurator
   ) {
-    // this.init();
+    this.init();
   }
 
   get(name: string, domain: string = null, withoutPrefix = true) {
@@ -36,14 +36,19 @@ export class Url {
       name = this.removePrefix(name);
     }
 
-    let route = <string>this.routes.get(name);
+    const route = <{ type: string; path: string; }>this.routes.get(name);
 
+    return route.path;
+  }
+
+  setup(route: { endpoint: string; name: string }) {
     const verbal = (<VerbalExpression>VerEx()).startOfLine().find('@').word();
-
-    const search = head(verbal.exec(route)) || '';
+    const search = head(verbal.exec(route.endpoint)) || '';
 
     if (search && !isEmpty(search) ) {
-      return this.definition(search)(route.replace(search, ''));
+      const url = this.definition(search)(route.endpoint.replace(`${search}:`, ''));
+
+      this.add(route.name, { type: search, path: url });
 
       /*const type = search.substring(1, search.length).toUpperCase();
       const domain = this.configurator.getOption(`DOMAINS.${type}`);
@@ -52,11 +57,9 @@ export class Url {
       const version = this.configurator.getOption('API_VERSION');
       const uri = `http://${domain}.${host}/${version}`;*/
     }
-
-    return search;
   }
 
-  add(route, name) {
+  add(name: string, route: { type: string; path: string}) {
     this.routes.set(name, route);
   }
 
@@ -101,7 +104,7 @@ export class Url {
   }
 
   private definition(prefix: string)  {
-    let knowed = [Url.SITE, Url.AUTH, Url.DOMAIN, Url.LOCAL];
+    let knowed = [Url.SITE, Url.API, Url.LOCAL];
 
     if (knowed.indexOf(prefix) < 1) {
       return () => { return ''; };
@@ -121,7 +124,11 @@ export class Url {
       local: (route: string): string => {
         return route;
       },
-      auth: (route: string, domain: string) => {}
+      api: (route: string, domain: string) => {
+        const domains = this.configurator.getOption(SYMBOLS.API_DOMAIN);
+        const version = this.configurator.getOption(SYMBOLS.API_VERSION);
+
+      }
     };
 
     const type = prefix.substring(1, prefix.length);
@@ -137,6 +144,6 @@ export class Url {
     const { keys }  = Object;
     const endpoints = <{ [key: string]: string }>this.configurator.getOptionTree(SYMBOLS.ENDPOINTS, false);
 
-    keys(endpoints).forEach(key => this.add(endpoints[key], key));
+    keys(endpoints).forEach(key => this.setup({endpoint: endpoints[key], name: key}));
   }
 }

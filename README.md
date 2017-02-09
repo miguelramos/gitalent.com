@@ -1,7 +1,7 @@
-FourSource FrontEnd Boilerplate
+GITALENT.COM SITE
 ====
 
-Fourcesource angular 2 boilerplate.
+Gitalent.com website in angular framework.
 
 ## Install
 
@@ -22,8 +22,8 @@ curl -o- -L https://yarnpkg.com/install.sh | bash
 
 * Project 
 ```bash
-git clone git@bitbucket.org:foursource/boilerplate.git
-cd boilerplate
+git clone https://github.com/miguelramos/gitalent.com
+cd gitalent.com
 yarn
 yarn start
 ```
@@ -57,12 +57,6 @@ Test production
 
 ```bash
 yarn prodserver
-```
-
-Or all in one
-
-```bash
-yarn prod
 ```
 
 # Release
@@ -103,8 +97,7 @@ To be described
 ## Contributors
 
 [![Author](https://img.shields.io/badge/author-miguelramos-blue.svg)](https://twitter.com/miguelonspring)
-[![Author](https://img.shields.io/badge/author-amaral-orange.svg)](https://twitter.com/jamaral)
 
 ## License
 
-[MIT](https://bitbucket.org/foursource/platform/src/master/LICENSE)
+[MIT](https://raw.githubusercontent.com/miguelramos/gitalent.com/master/LICENSE)

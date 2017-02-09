@@ -29,8 +29,8 @@ export class PlatformContainer extends Container implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.url.get(
-      SYMBOLS.ENDPOINTS_COMMON_FOOT
+    const endpoint = this.url.get(
+      SYMBOLS.ENDPOINTS_COMMON_NAV
     );
 
     this.state.observe().subscribe((state) => {

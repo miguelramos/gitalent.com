@@ -5,6 +5,7 @@ module.exports = {
     SUPPORTED: ['pt', 'es', 'de']
   },
   API_VERSION: 'v1',
+  API_DOMAIN: '',
   STATE: {
     NAVBAR: {
       isVisible: true,
@@ -39,5 +40,8 @@ module.exports = {
     FOOTER: {
       enable: true
     }
+  },
+  ENDPOINTS: {
+    COMMON_NAV: '@local:/assets/mocks/common/navigator-data.json'
   }
 }
