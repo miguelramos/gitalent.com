@@ -1,17 +1,22 @@
 import {
-  Component, Input, HostBinding, OnChanges,
+  Component, Input, HostBinding, AfterContentInit,
   ChangeDetectionStrategy, ChangeDetectorRef,
-  ContentChildren, QueryList
+  ContentChildren, QueryList, OnDestroy
 } from '@angular/core';
 
+import { Subscription } from 'rxjs/Subscription';
+
+import { BrandModel, PositionType } from './nav.model';
 import { NavigatorMenu } from './menu.directive';
 
 export interface NavigatorOptions {
   hasShadow: boolean;
+  hasBrand: boolean;
 }
 
 export const NavigatorOptions = <NavigatorOptions>{
-  hasShadow: false
+  hasShadow: false,
+  hasBrand: true
 }
 
 @Component({
@@ -23,7 +28,7 @@ export const NavigatorOptions = <NavigatorOptions>{
   templateUrl: 'navigator.template.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Navigator {
+export class Navigator implements AfterContentInit, OnDestroy {
 
   /**
    * Input options for main nav bar. Current options:
@@ -33,11 +38,31 @@ export class Navigator {
    */
   @Input()
   set options(config: NavigatorOptions) {
-    this._options = config;
+    this._options = Object.assign({}, NavigatorOptions, config);
     this.detectionStrategy.markForCheck();
   }
   get options() {
     return this._options;
+  }
+
+  /**
+   * Input model for brand. @see {@link BrandModel}.
+   * Data model to apply logo and other info to menu.
+   *
+   *
+   * @memberOf Navigator
+   */
+  @Input()
+  set brand(model: BrandModel) {
+    this._brandModel = model;
+    this.detectionStrategy.markForCheck();
+  }
+  get brand() {
+    return this._brandModel;
+  }
+
+  set subscriptions(subscription: Subscription) {
+    this._subscriptions.push(subscription);
   }
 
   navMenuContentChildren: QueryList<NavigatorMenu>;
@@ -50,6 +75,22 @@ export class Navigator {
    * @memberOf Navigator
    */
   private _options: NavigatorOptions;
+  private _subscriptions: Array<Subscription> = [];
+  /**
+   * Private class brand Model @see {@link BrandModel}
+   *
+   * @private
+   * @type {BrandModel}
+   * @memberOf Navigator
+   */
+  private _brandModel: BrandModel;
+
+  left: PositionType  = PositionType.LEFT;
+  right: PositionType = PositionType.RIGHT;
+
+  get menuList(): NavigatorMenu[] {
+    return this.navMenuContentChildren.toArray();
+  }
 
   constructor(
     private detectionStrategy: ChangeDetectorRef
@@ -59,6 +100,12 @@ export class Navigator {
   }
 
   ngAfterContentInit() {
-    console.log(this.navMenuContentChildren);
+    this.navMenuContentChildren.changes.subscribe((d) => {
+      this.detectionStrategy.markForCheck();
+    });
+  }
+
+  ngOnDestroy() {
+    this._subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 }

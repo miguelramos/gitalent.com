@@ -5,6 +5,9 @@ import { NavigatorMenu } from './menu.directive';
 import { Navigator } from './navigator.component';
 import { ShareModule } from '../../../foundation';
 
+export * from './nav.model';
+export * from './nav.service';
+
 @NgModule({
   id: module.id,
   imports: [ShareModule],

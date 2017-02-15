@@ -14,34 +14,8 @@ export type StoreType = {
 };
 
 export interface UINavbarState {
-  isVisible?: boolean;
-  isStick?: boolean;
-  isInverse?: boolean;
-  hasScroll?: boolean;
-  hasInfoBar?: boolean;
-  head?: {
-    enable?: boolean;
-    hasMobile?: boolean;
-    targetId?: string;
-  };
-  info?: {
-    enable?: boolean;
-  };
-  menu?: {
-    isLeft?: boolean;
-    isRight?: boolean;
-    enable?: boolean;
-  };
-  side?: {
-    isRight?: boolean;
-    isLeft?: boolean;
-    enable?: boolean;
-  };
-  user?: {
-    isRight?: boolean;
-    isLeft?: boolean;
-    enable?: boolean;
-  };
+  hasShadow?: boolean;
+  hasBrand?: boolean;
 }
 
 export interface UIFooterState {

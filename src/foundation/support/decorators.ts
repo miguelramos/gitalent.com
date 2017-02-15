@@ -1,6 +1,7 @@
 import { SYMBOLS } from './constants';
 import { Framework } from '../framework';
 import { State, UINavbarState } from '../system';
+
 import { makeDecorator } from '@angular/core/src/util/decorators';
 
 import { head, merge } from 'lodash';

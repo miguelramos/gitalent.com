@@ -1,6 +1,12 @@
-<gt-nav [options]="{hasShadow: true}">
-  <nav-menu position="nav-left" #origin="navigatorMenu">
-    <!--<template *hostView="origin"></template>-->
+<gt-nav [options]="navBarOptions" [brand]="brandModel">
+  <nav-menu *ngFor="let menu of menuModel"
+    [position]="menu.position"
+    [link]="menu.link"
+    [label]="menu.label"
+    [classes]="menu.classes.all()"
+    [enable]="menu.enable"
+    [active]="menu.active"
+    [icon]="menu.icon">
   </nav-menu>
 </gt-nav>
 

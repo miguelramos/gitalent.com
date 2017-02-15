@@ -1,19 +1,7 @@
 import { Directive, TemplateRef, Input } from '@angular/core';
 import { HostTemplateDirective } from '../../../foundation';
-/**
- * Interface for typing item/model
- * of menus to present on navbar.
- *
- * @export
- * @interface MenuResource
- */
-export interface MenuResource {
-  classes?: string[];
-  html?: HTMLElement;
-  text?: string;
-  link?: string;
-  active: boolean;
-}
+
+import { MenuModel, PositionType } from './nav.model';
 
 @Directive({
   selector: 'nav-menu, [nav-menu]',
@@ -27,25 +15,59 @@ export class NavigatorMenu {
    * @memberOf NavigatorMenu
    */
   @Input()
-  set position(pos: string) {
+  set position(pos: PositionType) {
     this._position = pos;
   }
   get position() {
     return this._position;
   }
 
-  /**
-   * Define item/anchors for the navigation menu.
-   * Model as @see {@link: MenuResource}
-   *
-   * @memberOf NavigatorMenu
-   */
   @Input()
-  set items(items: MenuResource[]) {
-    this._items = items;
+  set link(link: string | URL) {
+    this._link = link;
   }
-  get items() {
-    return this._items;
+  get link() {
+    return this._link
+  }
+
+  @Input()
+  set label(label: string) {
+    this._label = label;
+  }
+  get label() {
+    return this._label;
+  }
+
+  @Input()
+  set classes(classes: string[]) {
+    this._classes = classes;
+  }
+  get classes() {
+    return this._classes;
+  }
+
+  @Input()
+  set active(active: boolean) {
+    this._active = active;
+  }
+  get active() {
+    return this._active;
+  }
+
+  @Input()
+  set enable(enable: boolean) {
+    this._enable = enable;
+  }
+  get enable() {
+    return this._enable;
+  }
+
+  @Input()
+  set icon(icon: string) {
+    this._icon = icon;
+  }
+  get icon() {
+    return this._icon;
   }
 
   /**
@@ -57,6 +79,11 @@ export class NavigatorMenu {
    */
   public templateRef: TemplateRef<HostTemplateDirective> = null;
 
-  private _items: MenuResource[];
-  private _position: string = 'nav-left';
+  private _icon: string = null;
+  private _label: string = null;
+  private _active: boolean = false;
+  private _enable: boolean = true;
+  private _classes: string[] = [];
+  private _link: string | URL = null;
+  private _position: PositionType = PositionType.LEFT;
 }

@@ -2,20 +2,29 @@
   "data": {
     "brand": {
       "active": true,
-      "image": "assets/img/fs-logo.svg",
-      "image_inverse": "assets/img/fs-logo-white.png",
-      "label": "FourSource",
+      "image": null,
+      "label": "Gitalent.com",
       "link": "/"
     },
     "menu": [
-      { "link": "/details/buyers", "label": "For Buyers" },
-      { "link": "/details/manufacturers", "label": "For Manufacturers" },
-      { "link": "/details/service-agencies", "label": "For Service Agencies" },
-      { "link": "/pricing", "label": "Editions & Pricing" }
-    ],
-    "side": [
-      { "link": "/pricing", "label": "JOIN NOW", "classes": "btn-side btn-red btn-join" },
-      { "link": "/login", "label": "LOGIN", "classes": "btn-side" }
+      {
+        "link": "/",
+        "label": "Home",
+        "classes": ["nav-item", "is-tab"],
+        "position": "LEFT",
+        "active": true,
+        "enable": true,
+        "icon": null
+      },
+      {
+        "link": "/join",
+        "label": "Join",
+        "classes": ["nav-item", "is-tab"],
+        "position": "LEFT",
+        "active": false,
+        "enable": true,
+        "icon": null
+      }
     ]
   },
   "meta": {
