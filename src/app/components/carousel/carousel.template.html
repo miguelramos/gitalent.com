@@ -1,0 +1,10 @@
+<div class="carousel" [style.height.px]="height" [style.background-color]="background">
+  <ul class="sliders">
+    <ng-container *ngFor="let slide of sliders">
+      <li class="slide" slide-element [style.height.px]="height" [style.background-image]="slide.image">
+        <span *ngIf="slide.title" [innerHTML]="slide.title"></span>
+        <span *ngIf="slide.info" [innerHTML]="slide.info"></span>
+      </li>
+    </ng-container>
+  </ul>
+</div>

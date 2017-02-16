@@ -14,12 +14,26 @@ import { State, Configurator, Animator } from '../../../foundation';
 })
 export class HomeContainer implements AfterViewInit, OnDestroy {
   toggle: boolean = false;
+  slidesModel: any[];
 
   constructor(
     private state: State,
     private configurator: Configurator,
     private detectionStrategy: ChangeDetectorRef
-  ) {}
+  ) {
+    this.slidesModel = [
+      {
+        image: '/assets/img/slide-01.svg',
+        title: 'Heelo',
+        info: 'Nice to have',
+      },
+      {
+        image: '/assets/img/slide-02.svg',
+        title: '<h1>World</h1>',
+        info: '<p>Come on!</p>',
+      }
+    ];
+  }
 
   onSelect() {
     this.toggle = (this.toggle) === false ? true : false;

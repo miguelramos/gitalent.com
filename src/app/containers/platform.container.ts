@@ -63,7 +63,6 @@ export class PlatformContainer extends Container implements OnInit, OnDestroy {
     this.brandModel = navModel.getBrand();
     this.menuModel  = navModel.getMenu().all();
 
-    console.log(this.menuModel);
     this.detectionStrategy.markForCheck();
   }
 

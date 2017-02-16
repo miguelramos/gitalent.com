@@ -100,7 +100,7 @@ export class Navigator implements AfterContentInit, OnDestroy {
   }
 
   ngAfterContentInit() {
-    this.navMenuContentChildren.changes.subscribe((d) => {
+    this.subscriptions = this.navMenuContentChildren.changes.subscribe((d) => {
       this.detectionStrategy.markForCheck();
     });
   }

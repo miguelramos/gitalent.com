@@ -1,0 +1,14 @@
+.carousel {
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel > .sliders li {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom left;
+}
