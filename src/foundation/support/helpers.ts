@@ -206,3 +206,18 @@ export function authorizeHeaders(): RequestOptions {
 
   return  new RequestOptions({ headers: headers });
 }
+
+export function windowSize() {
+  const width = window.innerWidth
+      || document.documentElement.clientWidth
+      || document.body.clientWidth;
+
+  const height = window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight;
+
+  return {
+    width: width,
+    height: height
+  };
+}

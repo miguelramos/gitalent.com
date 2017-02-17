@@ -31,6 +31,16 @@ export class HomeContainer implements AfterViewInit, OnDestroy {
         image: '/assets/img/slide-02.svg',
         title: '<h1>World</h1>',
         info: '<p>Come on!</p>',
+      },
+      {
+        image: '/assets/img/slide-01.svg',
+        title: 'Cool',
+        info: 'Nice to have',
+      },
+      {
+        image: '/assets/img/slide-02.svg',
+        title: '<h1>Awesome</h1>',
+        info: '<p>Come on!</p>',
       }
     ];
   }
