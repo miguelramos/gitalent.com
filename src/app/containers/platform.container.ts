@@ -21,7 +21,7 @@ import { NavService, NavModel, BrandModel, MenuModel } from '../components';
 @UI({
   navigator: {
     hasBrand: true,
-    hasShadow: true
+    hasShadow: false
   }
 })
 export class PlatformContainer extends Container implements OnInit, OnDestroy {

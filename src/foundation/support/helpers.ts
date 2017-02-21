@@ -221,3 +221,14 @@ export function windowSize() {
     height: height
   };
 }
+
+export function isEven(n) {
+  return n == parseFloat(n) && !(n % 2);
+}
+
+export function chunks(collection: any[], group: number): any[][] {
+  return collection.reduce(
+    (previous: any, current: any, index: number, list: any[]) => !(index % group) ?
+      previous.concat([list.slice(index, index + group)]) : previous, []
+  );
+}

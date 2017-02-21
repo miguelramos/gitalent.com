@@ -1,6 +1,14 @@
 .carousel {
   overflow: hidden;
   position: relative;
+  background: rgba(146,209,196,1);
+  background: -moz-linear-gradient(top, rgba(146,209,196,1) 0%, rgba(198,218,185,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(146,209,196,1)), color-stop(100%, rgba(198,218,185,1)));
+  background: -webkit-linear-gradient(top, rgba(146,209,196,1) 0%, rgba(198,218,185,1) 100%);
+  background: -o-linear-gradient(top, rgba(146,209,196,1) 0%, rgba(198,218,185,1) 100%);
+  background: -ms-linear-gradient(top, rgba(146,209,196,1) 0%, rgba(198,218,185,1) 100%);
+  background: linear-gradient(to bottom, rgba(146,209,196,1) 0%, rgba(198,218,185,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#92d1c4', endColorstr='#c6dab9', GradientType=0 );
 }
 
 .carousel > .sliders li {

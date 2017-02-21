@@ -50,7 +50,7 @@ export class SlideElement {
   }
 
   get element() {
-    return this.elementRef.nativeElement;
+    return <HTMLElement>this.elementRef.nativeElement;
   }
 
   get ref() {

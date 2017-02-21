@@ -73,7 +73,15 @@ const COMMONCONFIG = function webpackConfig(): WebpackConfig {
       },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.html/, loader: 'raw-loader', exclude: [root('src/index.html')] },
-      { test: /\.css$/, loader: 'raw-loader' }
+      { test: /\.css$/, loader: 'raw-loader' },
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" },
+          { loader: "sass-loader" }
+        ]
+      }
     ]
   };
 

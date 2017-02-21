@@ -23,9 +23,10 @@
     <h1>Angular 2 Foursource Boilerplate</h1>
   </div>
 </div>-->
-<gt-carousel height="600" background="#4F95D0">
+<gt-carousel>
   <slide-tag *ngFor="let slide of slidesModel"
   [title]="slide.title"
-  [image]="slide.image">
+  [image]="slide.image" #origin="slideTag">
+    <template *hostView="origin"></template>
   </slide-tag>
 </gt-carousel>
