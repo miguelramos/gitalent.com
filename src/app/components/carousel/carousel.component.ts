@@ -51,6 +51,14 @@ export class Carousel implements OnDestroy, AfterContentInit, AfterViewInit {
     return this._interval;
   }
 
+  @Input()
+  set autoplay(autoplay: boolean) {
+    this._autoplay = autoplay;
+  }
+  get autoplay() {
+    return this._autoplay;
+  }
+
   set subscriptions(subscription: Subscription) {
     this._subscriptions.push(subscription);
   }
@@ -59,6 +67,7 @@ export class Carousel implements OnDestroy, AfterContentInit, AfterViewInit {
   slideElementChildren: QueryList<SlideElement>;
 
   private _height: number;
+  private _autoplay: boolean = true;
   private _interval: number = 5000;
   private _background: string = 'transparent';
   private _subscriptions: Array<Subscription> = [];
@@ -114,7 +123,11 @@ export class Carousel implements OnDestroy, AfterContentInit, AfterViewInit {
     });
 
     this.animator.options = Object.assign(
-      {}, options, { slides: this.slideElementChildren.toArray(), duration: this._interval }
+      {}, options, {
+        slides: this.slideElementChildren.toArray(),
+        duration: this.interval,
+        autoplay: this.autoplay
+      }
     );
 
     this.animator.init();

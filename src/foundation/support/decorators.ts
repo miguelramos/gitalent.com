@@ -2,12 +2,33 @@ import { SYMBOLS } from './constants';
 import { Framework } from '../framework';
 import { State, UINavbarState } from '../system';
 
-import { makeDecorator } from '@angular/core/src/util/decorators';
+import { Component } from '@angular/core';
+import { Type } from '@angular/core/src/type';
+import { makeDecorator, TypeDecorator } from '@angular/core/src/util/decorators';
 
 import { head, merge } from 'lodash';
 
 const STORE = require('store');
 const { defineProperty } = Object;
+
+export interface Prototype {
+  properties?: any;
+  observables?: any;
+  emiters?: any;
+}
+
+export interface PrototypeDecorator {
+  (obj: Prototype): TypeDecorator;
+  new (obj: Prototype): Prototype;
+}
+// https://clementmichelet.com/annotation-et-decorateur-personnalises-dans-angular-2/
+export const Prototype: PrototypeDecorator = <PrototypeDecorator>function (proto: Prototype): Function {
+  //TODO: Rework proto elements
+
+  return function (cls: Type<typeof Component>) {
+    Object.assign(cls.prototype, proto);
+  }
+}
 
 export interface UIDecorator {
   footer?: boolean;
@@ -26,7 +47,7 @@ export function UI(meta?: UIDecorator): any {
     UIElement
   );
 
-  return function (cls) {
+  return function (cls: Type<typeof Component>) {
     let onInit = cls.prototype.ngOnInit || function() { };
     let onSetup = cls.prototype.ngOnSetup;
 
