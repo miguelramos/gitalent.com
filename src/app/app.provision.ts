@@ -1,4 +1,5 @@
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { PlatformContainerModule } from './containers';
@@ -40,6 +41,7 @@ export const APP_PROVIDERS = [
  */
 export const APP_IMPORTS = [
   ...FRAMEWORK_PROVIDERS,
+  MaterialModule,
   CoreModule.forRoot(),
   PlatformContainerModule
 ];

@@ -12,8 +12,6 @@ export interface AnimationOptions {
     height: number;
   };
   area: number;
-  container: HTMLDivElement;
-  nav: HTMLDivElement;
   slides: SlideElement[];
   duration: number;
 }

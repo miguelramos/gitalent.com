@@ -2,7 +2,8 @@ import {
   Component, Input, ChangeDetectionStrategy,
   ChangeDetectorRef, ContentChildren, QueryList,
   AfterContentInit, OnDestroy, AfterViewInit,
-  ViewChildren, Renderer, NgZone
+  ViewChildren, Renderer, NgZone, OnChanges,
+  SimpleChanges, SimpleChange
 } from '@angular/core';
 
 import { Subscription } from 'rxjs/Subscription';
@@ -10,6 +11,14 @@ import { Subscription } from 'rxjs/Subscription';
 import { Animation } from './animation';
 import { windowSize } from '../../../foundation';
 import { Slide, SlideElement } from './slide.directive';
+
+export interface CarouselChanges extends SimpleChanges {
+  height?: SimpleChange;
+  background?: SimpleChange;
+  interval?: SimpleChange;
+  autoplay?: SimpleChange;
+  gutter?: SimpleChange
+}
 
 @Component({
   moduleId: module.id,
@@ -23,7 +32,7 @@ import { Slide, SlideElement } from './slide.directive';
   providers: [Animation],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Carousel implements OnDestroy, AfterContentInit, AfterViewInit {
+export class Carousel implements OnDestroy, OnChanges, AfterContentInit, AfterViewInit {
   @Input()
   set height(height: number) {
     this._height = height;
@@ -54,9 +63,19 @@ export class Carousel implements OnDestroy, AfterContentInit, AfterViewInit {
   @Input()
   set autoplay(autoplay: boolean) {
     this._autoplay = autoplay;
+    this.detectionStrategy.markForCheck();
   }
   get autoplay() {
     return this._autoplay;
+  }
+
+  @Input()
+  set gutter(gutter: number) {
+    this._gutter = gutter;
+    this.detectionStrategy.markForCheck();
+  }
+  get gutter() {
+    return this._gutter;
   }
 
   set subscriptions(subscription: Subscription) {
@@ -67,6 +86,7 @@ export class Carousel implements OnDestroy, AfterContentInit, AfterViewInit {
   slideElementChildren: QueryList<SlideElement>;
 
   private _height: number;
+  private _gutter: number = 0;
   private _autoplay: boolean = true;
   private _interval: number = 5000;
   private _background: string = 'transparent';
@@ -86,21 +106,27 @@ export class Carousel implements OnDestroy, AfterContentInit, AfterViewInit {
   descriptor() {
     const browserSize = windowSize();
     const container = <HTMLDivElement>document.querySelector('.carousel');
-    const navbar = <HTMLDivElement>document.querySelector('nav.nav');
-    const areaSize = browserSize.height - navbar.clientHeight;
 
+    const areaSize = browserSize.height - this.gutter;
+    console.log(areaSize, browserSize.height, this.gutter);
     return {
       browser: browserSize,
-      area: areaSize,
-      container: container,
-      nav: navbar
+      area: areaSize
     }
   }
 
   containerSetup() {
     const options = this.descriptor()
+    const container = <HTMLDivElement>document.querySelector('.carousel');
+    this.render.setElementStyle(container, 'height', `${options.area}px`);
+  }
 
-    this.render.setElementStyle(options.container, 'height', `${options.area}px`);
+  ngOnChanges(changes: CarouselChanges) {
+    if (changes.gutter) {
+      this.gutter = changes.gutter.currentValue;
+      this.containerSetup();
+      this.detectionStrategy.markForCheck();
+    }
   }
 
   ngAfterContentInit() {

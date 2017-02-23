@@ -1,4 +1,4 @@
-<gt-nav [options]="navBarOptions" [brand]="brandModel">
+<!--<gt-nav [options]="navBarOptions" [brand]="brandModel">
   <nav-menu *ngFor="let menu of menuModel"
     [position]="menu.position"
     [link]="menu.link"
@@ -8,7 +8,10 @@
     [active]="menu.active"
     [icon]="menu.icon">
   </nav-menu>
-</gt-nav>
+</gt-nav>-->
+<md-toolbar color="primary">
+  <span>Gitalent.com</span>
+</md-toolbar>
 
 <section id="content">
   <router-outlet></router-outlet>

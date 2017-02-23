@@ -123,6 +123,14 @@ const COMMONCONFIG = function webpackConfig(): WebpackConfig {
         mobile: true,
         links: [
           {
+            href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
+            rel: 'stylesheet'
+          },
+          {
+            href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic',
+            rel: 'stylesheet'
+          },
+          {
             href: '/assets/css/styles.css',
             rel: 'stylesheet'
           }
@@ -202,6 +210,14 @@ const COMMONCONFIG = function webpackConfig(): WebpackConfig {
           {
             href: '/assets/icon/safari-pinned-tab.svg',
             rel: 'mask-icon'
+          },
+          {
+            href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
+            rel: 'stylesheet'
+          },
+          {
+            href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic',
+            rel: 'stylesheet'
           },
           {
             href: '/assets/css/styles.css',

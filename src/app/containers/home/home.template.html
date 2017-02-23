@@ -23,7 +23,7 @@
     <h1>Angular 2 Foursource Boilerplate</h1>
   </div>
 </div>-->
-<gt-carousel>
+<gt-carousel [gutter]="toolbarGutter">
   <slide-tag *ngFor="let slide of slidesModel"
   [title]="slide.title"
   [image]="slide.image" #origin="slideTag">

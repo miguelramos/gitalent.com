@@ -3,7 +3,7 @@ import {
   ChangeDetectorRef, ChangeDetectionStrategy
 } from '@angular/core';
 
-import { State, Configurator, Animator, Prototype } from '../../../foundation';
+import { State, Configurator, Animator } from '../../../foundation';
 
 @Component({
   moduleId: module.id,
@@ -12,15 +12,10 @@ import { State, Configurator, Animator, Prototype } from '../../../foundation';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [ Animator.bounceIn(1000) ]
 })
-@Prototype({
-  properties: {
-    one: false,
-    cool: null
-  }
-})
 export class HomeContainer implements AfterViewInit, OnDestroy {
   toggle: boolean = false;
   slidesModel: any[];
+  toolbarGutter: number = 0;
 
   constructor(
     private state: State,
@@ -49,7 +44,6 @@ export class HomeContainer implements AfterViewInit, OnDestroy {
         info: '<p>Come on!</p>',
       }
     ];
-    console.log(this);
   }
 
   onSelect() {
@@ -59,6 +53,9 @@ export class HomeContainer implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.toggle = true;
+    const navbar = <HTMLDivElement>document.querySelector('.mat-toolbar');
+    this.toolbarGutter = navbar.clientHeight;
+
     this.detectionStrategy.markForCheck();
   }
 
