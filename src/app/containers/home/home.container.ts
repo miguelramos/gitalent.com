@@ -1,64 +1,26 @@
 import {
-  Component, AfterViewInit, OnDestroy,
-  ChangeDetectorRef, ChangeDetectionStrategy
+  Component, ChangeDetectionStrategy
 } from '@angular/core';
 
-import { State, Configurator, Animator } from '../../../foundation';
+import { Store } from '@ngrx/store';
+import { UINavBarAction } from '../../shared';
+import { ApplicationState } from '../../app.store';
 
 @Component({
   moduleId: module.id,
-  selector: 'home-page',
-  templateUrl: './home.template.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [ Animator.bounceIn(1000) ]
+  selector: 'ui-home',
+  styleUrls: ['./home.scss'],
+  templateUrl: './home.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeContainer implements AfterViewInit, OnDestroy {
-  toggle: boolean = false;
-  slidesModel: any[];
-  toolbarGutter: number = 0;
+export class HomeContainer  {
+  title: string = 'Homepage';
 
   constructor(
-    private state: State,
-    private configurator: Configurator,
-    private detectionStrategy: ChangeDetectorRef
-  ) {
-    this.slidesModel = [
-      {
-        image: '/assets/img/slide-01.svg',
-        title: 'Heelo',
-        info: 'Nice to have',
-      },
-      {
-        image: '/assets/img/slide-02.svg',
-        title: '<h1>World</h1>',
-        info: '<p>Come on!</p>',
-      },
-      {
-        image: '/assets/img/slide-01.svg',
-        title: 'Cool',
-        info: 'Nice to have',
-      },
-      {
-        image: '/assets/img/slide-02.svg',
-        title: '<h1>Awesome</h1>',
-        info: '<p>Come on!</p>',
-      }
-    ];
+    private store: Store<ApplicationState>
+  ) {}
+
+  changeState() {
+    this.store.dispatch(new UINavBarAction({enable: false}));
   }
-
-  onSelect() {
-    this.toggle = (this.toggle) === false ? true : false;
-    this.detectionStrategy.markForCheck();
-  }
-
-  ngAfterViewInit() {
-    this.toggle = true;
-    const navbar = <HTMLDivElement>document.querySelector('.mat-toolbar');
-    this.toolbarGutter = navbar.clientHeight;
-
-    this.detectionStrategy.markForCheck();
-  }
-
-  ngOnDestroy() {}
-
 }

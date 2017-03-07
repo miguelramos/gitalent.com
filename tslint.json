@@ -90,8 +90,8 @@
       "check-type"
     ],
 
-    //"directive-selector": [true, "attribute", ["Directive", "dir-prefix2"], "kebab-case"],
-    "component-selector": [true, "element", ["fs", "Component"], "kebab-case"],
+    "directive-selector": [true, "attribute", ["di", "dir"], "kebab-case"],
+    "component-selector": [true, "element", ["ui", "tag"], "kebab-case"],
 
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
@@ -102,7 +102,7 @@
     "no-forward-ref": true,
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
-    "component-class-suffix": true,
+    "component-class-suffix": false,
     "directive-class-suffix": true,
     "import-destructuring-spacing": true,
     "templates-use-public": true,
