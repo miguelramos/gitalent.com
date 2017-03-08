@@ -7,5 +7,5 @@ export const PLATFORM_MODULES = [
   ROUTING,
   BrowserModule,
   ShareModule,
-  CoreModule
+  CoreModule.forRoot()
 ];

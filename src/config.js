@@ -6,15 +6,6 @@ module.exports = {
   },
   API_VERSION: 'v1',
   API_DOMAIN: '',
-  STATE: {
-    NAVBAR: {
-      hasShadow: true,
-      hasBrand: true
-    },
-    FOOTER: {
-      enable: true
-    }
-  },
   ENDPOINTS: {
     COMMON_NAV: '@local:/assets/mocks/common/navigator-data.json'
   }

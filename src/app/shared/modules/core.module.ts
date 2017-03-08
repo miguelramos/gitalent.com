@@ -7,6 +7,7 @@ import {
   TranslateModule, TranslateLoader, TranslateStaticLoader, TranslatePipe, TranslateService
 } from 'ng2-translate/ng2-translate';
 
+import { Url } from '../lib/url';
 import { Configurator } from '../lib/configurator';
 
 export function createTranslateLoader(http: Http) {
@@ -28,9 +29,9 @@ export const CONFIG_PROVIDER = [
   { provide: Configurator, useFactory: configuratorFactory, deps: [ CONFIGTOKEN ] }
 ];
 
-/*export function urlFactory(configurator: Configurator) {
+export function urlFactory(configurator: Configurator) {
   return new Url(configurator);
-}*/
+}
 
 @NgModule({
   imports: [
@@ -54,11 +55,11 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
-        /*{
+        {
           provide: Url,
           useFactory: urlFactory,
           deps: [ Configurator ]
-        }*/
+        }
       ]
     };
   }

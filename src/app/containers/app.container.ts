@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Store } from '@ngrx/store';
-import { ApplicationState } from '../app.store';
+import { ApplicationState } from '../shared';
 
 @Component({
   moduleId: module.id,

@@ -3,7 +3,7 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { ApplicationReducer } from './app.store';
+import { ApplicationReducer } from './shared';
 import { PLATFORM_MODULES } from './app.provision';
 
 import { AppContainer } from './containers/app.container';

@@ -3,8 +3,7 @@ import {
 } from '@angular/core';
 
 import { Store } from '@ngrx/store';
-import { UINavBarAction } from '../../shared';
-import { ApplicationState } from '../../app.store';
+import { UINavBarAction, ApplicationState } from '../../shared';
 
 @Component({
   moduleId: module.id,
@@ -13,8 +12,8 @@ import { ApplicationState } from '../../app.store';
   templateUrl: './home.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeContainer  {
-  title: string = 'Homepage';
+export class HomeContainer {
+  title = 'Homepage';
 
   constructor(
     private store: Store<ApplicationState>

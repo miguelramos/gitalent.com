@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { type, buildReducer } from '../utils';
+import { type, buildReducer } from '../support/utils';
 
 export class UINavBarModel {
   enable: boolean;

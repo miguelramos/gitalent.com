@@ -1,0 +1,15 @@
+export const SYMBOLS = Object.freeze({
+  // KEYS
+  ENVIRONMENT: 'ENVIRONMENT',
+  ENDPOINTS: 'ENDPOINTS',
+  LANG_DEFAULT: 'LANG.DEFAULT',
+  LANG_SUPPORTED: 'LANG.SUPPORTED',
+  API_VERSION: 'API_VERSION',
+  API_DOMAIN: 'API_DOMAIN',
+  /* tslint:disable */
+  EMAILREGEX: '[a-z0-9!#$%&\'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*',
+  /* tslint:enable */
+  ENDPOINTS_COMMON_NAV: 'ENDPOINTS.COMMON_NAV',
+  ENDPOINTS_COMMON_FOOT: 'ENDPOINTS.COMMON_FOOT',
+  ENDPOINTS_AUTH_LOGIN: 'ENDPOINTS.AUTH_LOGIN',
+});

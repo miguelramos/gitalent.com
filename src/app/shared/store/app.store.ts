@@ -1,4 +1,5 @@
-import { createReducer, UIReducer, UIState } from './shared';
+import { createReducer } from '../support/utils';
+import { UIReducer, UIState } from './ui.store';
 
 export interface ApplicationState {
   ui: UIState;
