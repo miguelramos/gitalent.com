@@ -1,0 +1,184 @@
+// MAIN MATERIAL THEME
+@include mat-core();
+
+$talent-primary: mat-palette($md-queen);
+$talent-accent:  mat-palette($md-light, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$talent-warn:    mat-palette($md-desire);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$talent-theme: mat-light-theme($talent-primary, $talent-accent, $talent-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($talent-theme);
+
+.talent-dark-theme {
+  $dark-primary: mat-palette($md-honey);
+  $dark-accent:  mat-palette($md-space, A200, A100, A400);
+  $dark-warn:    mat-palette($md-desire);
+
+  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+  @include angular-material-theme($dark-theme);
+}
+
+// MIXINS
+@mixin ui-toolbar-theme($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  // Use md-color to extract individual colors from a palette as necessary.
+  &.ui-toolbar {
+    font-family: $family-primary;
+    background: mat-color($primary, '500-contrast');
+    color: mat-color($primary, 'A100-contrast');
+
+    .space-flex {
+      flex: 1 1 auto;
+    }
+  }
+}
+
+//STYLING
+
+body {
+  height: 100vh;
+  min-height: 100vh;
+}
+
+md-toolbar {
+  @include ui-toolbar-theme($talent-theme);
+}
+
+//EFFECTS
+.ui-fade-in {
+  -webkit-animation: fadein 5s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 5s; /* Firefox < 16 */
+        -ms-animation: fadein 5s; /* Internet Explorer */
+         -o-animation: fadein 5s; /* Opera < 12.1 */
+            animation: fadein 5s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/*.slide {
+  h1 {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    font-size: 3em;
+    font-weight: bold;
+    color: white;
+  }
+
+  h2 {
+    position: absolute;
+    top: 28%;
+    right: 5%;
+    font-weight: bold;
+    font-size: 2.5em;
+    color: mat-color($md-desire, 500);
+    text-align: right;
+    padding: 1%;
+    background: mat-color($md-honey, A400);
+  }
+
+  h3 {
+    position: absolute;
+    top: 40%;
+    right: 5%;
+    font-weight: bold;
+    font-size: 2em;
+    color: mat-color($md-honey, A700);
+    padding: 1%;
+    background: mat-color($md-honey, A100);
+  }
+}
+
+.ui-button.mat-raised-button {
+  position: absolute;
+  top: 80%;
+  left: 45%;
+  z-index: 1;
+  font-size: 3em;
+  text-transform: uppercase;
+  padding: 1%;
+  color: white;
+  background: mat-color($md-desire, 500);
+}
+
+.ui-toolbar.mat-toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.70) !important;
+  color: mat-color($md-honey, A400);
+  font-family: $family-primary;
+
+  .space-flex {
+    flex: 1 1 auto;
+  }
+}
+
+.is-480x480 {
+  width: 480px;
+  height: 480px;
+}
+
+.dev, .rec {
+  .content p:not(:last-child) {
+    margin-top: 1.5em;
+  }
+
+  .title {
+    font-size: 4rem;
+  }
+
+  .title, .subtile {
+    font-weight: 400;
+  }
+
+  .content {
+    color: mat-color($md-space, 200);
+  }
+}
+
+.rec {
+  .title, .subtitle {
+    color: mat-color($md-honey, A400) !important;
+  }
+
+  .content {
+    color: white;
+  }
+}*/

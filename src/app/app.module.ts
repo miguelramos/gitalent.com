@@ -9,7 +9,9 @@ import { PLATFORM_MODULES } from './app.provision';
 import { AppContainer } from './containers/app.container';
 
 @NgModule({
-  declarations: [AppContainer],
+  declarations: [
+    AppContainer
+  ],
   imports: [
     PLATFORM_MODULES,
     StoreModule.provideStore(ApplicationReducer),

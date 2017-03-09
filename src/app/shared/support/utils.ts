@@ -1,3 +1,5 @@
+import { style, animate, transition, state, trigger } from '@angular/core';
+
 import { ActionReducer, combineReducers, Action } from '@ngrx/store';
 
 const typeCache: { [label: string]: boolean } = {};
@@ -46,4 +48,19 @@ export function buildReducer<T>(initial: T, ...actionClasses: { type: string, re
         handlers[ac.type] = ac.reduce;
     });
     return (state: T = initial, action: Action) => handlers[action.type] ? handlers[action.type](state, action) : state;
+}
+
+export class Animation {
+  static PAGE = [
+    trigger('PageAnimation', [
+      state(':enter', style({opacity: 0})),
+      transition(':enter', [   // :enter is alias to 'void => *'
+        style({ opacity: 0 }),
+        animate(800, style({ opacity: 1 }))
+      ]),
+      transition(':leave', [   // :leave is alias to '* => void'
+        animate(400, style({ opacity: 0 }))
+      ])
+    ])
+  ];
 }
